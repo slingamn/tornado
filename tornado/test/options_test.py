@@ -35,12 +35,12 @@ class LogFormatterTest(unittest.TestCase):
         # for testing.  (testing with color off fails to expose some potential
         # encoding issues from the control characters)
         self.formatter._colors = {
-            logging.ERROR: u"\u0001",
+            log.ERROR: u"\u0001",
             }
         self.formatter._normal = u"\u0002"
         self.formatter._color = True
         # construct a Logger directly to bypass getLogger's caching
-        self.logger = logging.Logger('LogFormatterTest')
+        self.logger = log.Logger('LogFormatterTest')
         self.logger.propagate = False
         self.tempdir = tempfile.mkdtemp()
         self.filename = os.path.join(self.tempdir, 'log.out')
@@ -57,7 +57,7 @@ class LogFormatterTest(unittest.TestCase):
         # In python 2, supports arbitrary byte strings and unicode objects
         # that contain only ascii.  In python 3, supports ascii-only unicode
         # strings (but byte strings will be repr'd automatically.
-        return logging.FileHandler(filename)
+        return log.FileHandler(filename)
 
     def get_output(self):
         with open(self.filename, "rb") as f:
@@ -95,7 +95,7 @@ class UnicodeLogFormatterTest(LogFormatterTest):
         # Adding an explicit encoding configuration allows non-ascii unicode
         # strings in both python 2 and 3, without changing the behavior
         # for byte strings.
-        return logging.FileHandler(filename, encoding="utf8")
+        return log.FileHandler(filename, encoding="utf8")
 
     def test_unicode_logging(self):
         self.logger.error(u"\u00e9")

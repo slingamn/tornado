@@ -19,7 +19,7 @@ that follows execution as it moves to other execution contexts.
 
 The motivating examples are to eliminate the need for explicit
 async_callback wrappers (as in tornado.web.RequestHandler), and to
-allow some additional context to be kept for logging.
+allow some additional context to be kept for log.
 
 This is slightly magic, but it's an extension of the idea that an exception
 handler is a kind of stack-local state and when that stack is suspended
@@ -36,7 +36,7 @@ Example usage::
         try:
             yield
         except Exception:
-            logging.error("exception in asynchronous operation",exc_info=True)
+            log.error("exception in asynchronous operation",exc_info=True)
             sys.exit(1)
 
     with StackContext(die_on_error):

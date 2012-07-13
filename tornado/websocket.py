@@ -257,7 +257,7 @@ class WebSocketProtocol(object):
             try:
                 return callback(*args, **kwargs)
             except Exception:
-                logging.error("Uncaught exception in %s",
+                log.error("Uncaught exception in %s",
                               self.request.path, exc_info=True)
                 self._abort()
         return wrapper
@@ -289,7 +289,7 @@ class WebSocketProtocol76(WebSocketProtocol):
         try:
             self._handle_websocket_headers()
         except ValueError:
-            logging.debug("Malformed WebSocket request received")
+            log.debug("Malformed WebSocket request received")
             self._abort()
             return
 
@@ -344,7 +344,7 @@ class WebSocketProtocol76(WebSocketProtocol):
         try:
             challenge_response = self.challenge_response(challenge)
         except ValueError:
-            logging.debug("Malformed key data in WebSocket request")
+            log.debug("Malformed key data in WebSocket request")
             self._abort()
             return
         self._write_response(challenge_response)
@@ -457,7 +457,7 @@ class WebSocketProtocol13(WebSocketProtocol):
             self._handle_websocket_headers()
             self._accept_connection()
         except ValueError:
-            logging.debug("Malformed WebSocket request received")
+            log.debug("Malformed WebSocket request received")
             self._abort()
             return
 

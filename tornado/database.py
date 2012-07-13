@@ -83,7 +83,7 @@ class Connection(object):
         try:
             self.reconnect()
         except Exception:
-            logging.error("Cannot connect to MySQL on %s", self.host,
+            log.error("Cannot connect to MySQL on %s", self.host,
                           exc_info=True)
 
     def __del__(self):
@@ -207,7 +207,7 @@ class Connection(object):
         try:
             return cursor.execute(query, parameters)
         except OperationalError:
-            logging.error("Error connecting to MySQL on %s", self.host)
+            log.error("Error connecting to MySQL on %s", self.host)
             self.close()
             raise
 

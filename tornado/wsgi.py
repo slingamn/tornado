@@ -302,11 +302,11 @@ class WSGIContainer(object):
 
     def _log(self, status_code, request):
         if status_code < 400:
-            log_method = logging.info
+            log_method = log.info
         elif status_code < 500:
-            log_method = logging.warning
+            log_method = log.warning
         else:
-            log_method = logging.error
+            log_method = log.error
         request_time = 1000.0 * request.request_time()
         summary = request.method + " " + request.uri + " (" + \
             request.remote_ip + ")"

@@ -261,7 +261,7 @@ class HTTPConnection(object):
 
             self.request_callback(self._request)
         except _BadRequestException, e:
-            logging.info("Malformed HTTP request from %s: %s",
+            log.info("Malformed HTTP request from %s: %s",
                          self.address[0], e)
             self.stream.close()
             return

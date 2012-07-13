@@ -177,7 +177,7 @@ def _check_file(modify_times, path):
         modify_times[path] = modified
         return
     if modify_times[path] != modified:
-        logging.info("%s modified; restarting server", path)
+        log.info("%s modified; restarting server", path)
         _reload()
 
 
@@ -272,13 +272,13 @@ def main():
                 # module) will see the right things.
                 exec f.read() in globals(), globals()
     except SystemExit, e:
-        logging.info("Script exited with status %s", e.code)
+        log.info("Script exited with status %s", e.code)
     except Exception, e:
-        logging.warning("Script exited with uncaught exception", exc_info=True)
+        log.warning("Script exited with uncaught exception", exc_info=True)
         if isinstance(e, SyntaxError):
             watch(e.filename)
     else:
-        logging.info("Script exited normally")
+        log.info("Script exited normally")
     # restore sys.argv so subsequent executions will include autoreload
     sys.argv = original_argv
 

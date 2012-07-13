@@ -36,7 +36,7 @@ class TriggerHandler(RequestHandler):
 
     @asynchronous
     def get(self):
-        logging.info("queuing trigger")
+        log.info("queuing trigger")
         self.queue.append(self.finish)
         if self.get_argument("wake", "true") == "true":
             self.wake_callback()

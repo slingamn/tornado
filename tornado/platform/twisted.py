@@ -80,7 +80,7 @@ class TornadoDelayedCall(object):
         try:
             self._func()
         except:
-            logging.error("_called caught exception", exc_info=True)
+            log.error("_called caught exception", exc_info=True)
 
     def getTime(self):
         return self._time
