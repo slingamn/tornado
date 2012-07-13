@@ -144,6 +144,7 @@ class _Options(dict):
         # Set up log level and pretty console logging by default
         if self.logging != 'none':
             logging.getLogger().setLevel(getattr(logging, self.logging.upper()))
+            logging.basicConfig()
             enable_pretty_logging()
 
         return remaining
