@@ -54,6 +54,7 @@ _translations = {}
 _supported_locales = frozenset([_default_locale])
 _use_gettext = False
 
+log = logging.getLogger(__name__)
 
 def get(*locale_codes):
     """Returns the closest match for the given locale codes.

@@ -35,6 +35,7 @@ try:
 except ImportError:
     ssl = None
 
+log = logging.getLogger(__name__)
 
 class IOStream(object):
     r"""A utility class to write to and read from a non-blocking socket.

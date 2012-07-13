@@ -18,19 +18,19 @@ class TestRequestHandler(RequestHandler):
 
     @asynchronous
     def get(self):
-        log.info('in get()')
+        logging.info('in get()')
         # call self.part2 without a self.async_callback wrapper.  Its
         # exception should still get thrown
         self.io_loop.add_callback(self.part2)
 
     def part2(self):
-        log.info('in part2()')
+        logging.info('in part2()')
         # Go through a third layer to make sure that contexts once restored
         # are again passed on to future callbacks
         self.io_loop.add_callback(self.part3)
 
     def part3(self):
-        log.info('in part3()')
+        logging.info('in part3()')
         raise Exception('test exception')
 
     def get_error_html(self, status_code, **kwargs):

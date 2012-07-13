@@ -163,7 +163,7 @@ class CookieTest(AsyncHTTPTestCase, LogTrapTestCase):
                 ('foo="a\\"b"', 'a"b'),
                 ]
         for header, expected in data:
-            log.info("trying %r", header)
+            logging.info("trying %r", header)
             response = self.fetch("/get", headers={"Cookie": header})
             self.assertEqual(response.body, utf8(expected))
 
@@ -235,11 +235,11 @@ class ConnectionCloseTest(AsyncHTTPTestCase, LogTrapTestCase):
         self.wait()
 
     def on_handler_waiting(self):
-        log.info('handler waiting')
+        logging.info('handler waiting')
         self.stream.close()
 
     def on_connection_close(self):
-        log.info('connection closed')
+        logging.info('connection closed')
         self.stop()
 
 

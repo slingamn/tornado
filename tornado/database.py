@@ -33,6 +33,7 @@ except ImportError:
     # which has limitations on third-party modules)
     MySQLdb = None
 
+log = logging.getLogger(__name__)
 
 class Connection(object):
     """A lightweight wrapper around MySQLdb DB-API connections.

@@ -32,6 +32,7 @@ from tornado import stack_context
 from tornado.escape import utf8
 from tornado.httpclient import HTTPRequest, HTTPResponse, HTTPError, AsyncHTTPClient, main
 
+log = logging.getLogger(__name__)
 
 class CurlAsyncHTTPClient(AsyncHTTPClient):
     def initialize(self, io_loop=None, max_clients=10,
@@ -265,7 +266,7 @@ class CurlError(HTTPError):
 
 def _curl_create(max_simultaneous_connections=None):
     curl = pycurl.Curl()
-    if log.getLogger().isEnabledFor(log.DEBUG):
+    if logging.getLogger().isEnabledFor(logging.DEBUG):
         curl.setopt(pycurl.VERBOSE, 1)
         curl.setopt(pycurl.DEBUGFUNCTION, _curl_debug)
     curl.setopt(pycurl.MAXCONNECTS, max_simultaneous_connections or 5)

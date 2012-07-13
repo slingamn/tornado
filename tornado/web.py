@@ -90,6 +90,7 @@ try:
 except ImportError:
     from cStringIO import StringIO as BytesIO  # python 2
 
+log = logging.getLogger(__name__)
 
 class RequestHandler(object):
     """Subclass this class and define get() or post() to make a handler.

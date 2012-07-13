@@ -36,7 +36,7 @@ Example usage::
         try:
             yield
         except Exception:
-            log.error("exception in asynchronous operation",exc_info=True)
+            logging.error("exception in asynchronous operation",exc_info=True)
             sys.exit(1)
 
     with StackContext(die_on_error):
@@ -82,7 +82,6 @@ class _State(threading.local):
     def __init__(self):
         self.contexts = ()
 _state = _State()
-
 
 class StackContext(object):
     '''Establishes the given context as a StackContext that will be transferred.

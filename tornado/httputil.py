@@ -25,6 +25,7 @@ import re
 from tornado.escape import native_str, parse_qs_bytes, utf8
 from tornado.util import b, ObjectDict
 
+log = logging.getLogger(__name__)
 
 class HTTPHeaders(dict):
     """A dictionary that maintains Http-Header-Case for all keys.

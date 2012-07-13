@@ -42,8 +42,8 @@ class ProcessTest(LogTrapTestCase):
             # Exit now so the parent process will restart the child
             # (since we don't have a clean way to signal failure to
             # the parent that won't restart)
-            log.error("aborting child process from tearDown")
-            log.shutdown()
+            logging.error("aborting child process from tearDown")
+            logging.shutdown()
             os._exit(1)
         # In the surviving process, clear the alarm we set earlier
         signal.alarm(0)
@@ -121,7 +121,7 @@ class ProcessTest(LogTrapTestCase):
 
                 os._exit(0)
         except Exception:
-            log.error("exception in child process %d", id, exc_info=True)
+            logging.error("exception in child process %d", id, exc_info=True)
             raise
 
 

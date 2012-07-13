@@ -196,6 +196,7 @@ from tornado.util import bytes_type, ObjectDict
 _DEFAULT_AUTOESCAPE = "xhtml_escape"
 _UNSET = object()
 
+log = logging.getLogger(__name__)
 
 class Template(object):
     """A compiled template.

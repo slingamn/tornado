@@ -50,6 +50,7 @@ try:
 except ImportError:
     from cStringIO import StringIO as BytesIO  # python 2
 
+log = logging.getLogger(__name__)
 
 # PEP 3333 specifies that WSGI on python 3 generally deals with byte strings
 # that are smuggled inside objects of type unicode (via the latin1 encoding).

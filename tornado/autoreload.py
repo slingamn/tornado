@@ -82,6 +82,7 @@ try:
 except ImportError:
     signal = None
 
+log = logging.getLogger(__name__)
 
 def start(io_loop=None, check_time=500):
     """Restarts the process automatically when a module is modified.

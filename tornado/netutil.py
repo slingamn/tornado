@@ -34,6 +34,7 @@ try:
 except ImportError:
     ssl = None
 
+log = logging.getLogger(__name__)
 
 class TCPServer(object):
     r"""A non-blocking, single-threaded TCP server.

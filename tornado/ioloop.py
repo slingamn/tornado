@@ -48,6 +48,7 @@ except ImportError:
 
 from tornado.platform.auto import set_close_exec, Waker
 
+log = logging.getLogger(__name__)
 
 class IOLoop(object):
     """A level-triggered I/O loop.

@@ -102,7 +102,7 @@ Foo
                      'a\\b.txt',
                      ]
         for filename in filenames:
-            log.info("trying filename %r", filename)
+            logging.info("trying filename %r", filename)
             data = """\
 --1234
 Content-Disposition: form-data; name="files"; filename="%s"

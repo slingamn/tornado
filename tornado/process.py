@@ -33,6 +33,7 @@ try:
 except ImportError:
     multiprocessing = None
 
+log = logging.getLogger(__name__)
 
 def cpu_count():
     """Returns the number of processors on this machine."""

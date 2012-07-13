@@ -61,6 +61,7 @@ from tornado import escape
 from tornado.httputil import url_concat
 from tornado.util import bytes_type, b
 
+log = logging.getLogger(__name__)
 
 class OpenIdMixin(object):
     """Abstract implementation of OpenID and Attribute Exchange.

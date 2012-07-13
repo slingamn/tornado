@@ -32,6 +32,7 @@ import tornado.web
 
 from tornado.util import bytes_type, b
 
+log = logging.getLogger(__name__)
 
 class WebSocketHandler(tornado.web.RequestHandler):
     """Subclass this class to create a basic WebSocket handler.
