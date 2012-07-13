@@ -255,6 +255,11 @@ class IOLoop(object):
         The loop will run until one of the I/O handlers calls stop(), which
         will make the loop stop after the current event iteration completes.
         """
+        # don't start without some log handling enabled
+        if len(logging.getLogger().handlers) == 0:
+            logging.basicConfig()
+            # we could also use tornado.options.enable_pretty_logging()
+
         if self._stopped:
             self._stopped = False
             return
